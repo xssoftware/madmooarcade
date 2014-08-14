@@ -8,9 +8,9 @@ Madmoo Arcade is simple javascript based shooter game.
 
 ===========
 
-* Authors: 
+Authors: 
 + Lyubomir Tsekov, 
 + Stefan Geshev, 
 + Atanas Slavov <br>  
-* Mentor: 
+Mentor: 
 + Ivan Nozhdelov
