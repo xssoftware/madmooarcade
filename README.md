@@ -1,7 +1,7 @@
 madmooarcade
 ============
 
-## XS Software & NBU Summer intern project team MadmooArcade 
+### XS Software & NBU Summer intern project team MadmooArcade 
 
 ===========
 
