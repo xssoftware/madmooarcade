@@ -1,6 +1,6 @@
-# Madmoo Arcade
+# Madmoo Arcade #
 
-#### XS Software & NBU Summer intern project team Madmoo Arcade 
+#### XS Software & NBU Summer intern project team Madmoo Arcade ####
 
 ===========
 
