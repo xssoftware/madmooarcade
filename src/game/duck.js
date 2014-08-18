@@ -4,7 +4,7 @@ function Duck(x,y){
 	this.x = x;
 	this.y = y;
 	this.eventEmitter = new EventEmitter();
-	this.viewObject = new Container();
+	this.viewObject = new game.Container();
 
 	this.viewObject.x = x;
 	this.viewObject.y = y;
