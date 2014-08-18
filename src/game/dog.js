@@ -45,7 +45,7 @@ function Dog(x, y){
 		jump : 0.08,
 		isScared : 0.1,
 		oneDuck : 0.1
-	}
+	};
 	
 	console.log(this.texture);
 	
@@ -123,6 +123,7 @@ var self = this;
 	tween2.start();
 	this.setAnimation('jump', false, function(){
 		self.currentAnimation.visible = false;
+		self.eventEmitter.emit('jumped');
 	});
 	
 };

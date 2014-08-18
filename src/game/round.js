@@ -5,7 +5,7 @@ function Round(stage){
 	this.ducksPerRound = 10;
 	this.dog = new Dog(1,350);
 	this.stage = stage;
-	
+	//this.duck = new Duck(250,250);
 
 }
 
@@ -20,11 +20,13 @@ Round.prototype.start = function(){
 	});
 	
 	this.dog.eventEmitter.registerEvent('foundDuck', function(){
-		self.dog.jump()
+		self.dog.jump();
 	});
 	
 	this.dog.eventEmitter.registerEvent('jumped', function(){
 		//here we create the ducks and send them on their way
+		//this.stage.addChild(this.duck.viewObject);
+		//self.duck.flyHorizontally();
 	});
 	
 	
