@@ -78,10 +78,41 @@ Duck.prototype.setAnimation = function(animation, loop, onComplete){
 	this.currentAnimation.play();
 };
 
+
+Duck.prototype.flyVertically = function(x,y){
+	var tween = new game.Tween(this.viewObject.position);
+	var self = this;
+	tween.to({y: -80}, 3500);
+	this.x = x;
+	this.y = y;
+
+	tween.onComplete(function(){
+		self.eventEmitter.emit('destinationReached');
+	});
+
+	this.setAnimation('flyVertically');
+	tween.start();
+};
+
+Duck.prototype.flyDiagonally = function(x,y){
+	var tween = new game.Tween(this.viewObject.position);
+	var self = this;
+	tween.to({x: new game.System().width, y: 1},2500);
+	this.x = x;
+	this.y = y;
+
+	tween.onComplete(function(){
+		self.eventEmitter.emit('destinationReached');
+	});
+
+	this.setAnimation('flyDiagonally');
+	tween.start();
+};
+
 Duck.prototype.flyHorizontally = function(x, y){
 	var tween = new game.Tween(this.viewObject.position);
 	var self = this;
-	tween.to({x:x, y: y + 250}, 3500);
+	tween.to({x: new game.System().width}, 3500);
 	this.x = x;
 	this.y = y;
 	
@@ -93,3 +124,4 @@ Duck.prototype.flyHorizontally = function(x, y){
 	tween.start();
 	
 };
+
