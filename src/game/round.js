@@ -29,6 +29,8 @@ Round.prototype.start = function(){
 	});
 	
 	this.dog.eventEmitter.registerEvent('jumped', function(){
+	     game.audio.playSound('duck', 1);
+	
 		//here we create the ducks and send them on their way
 		self.duck1.flyVertically();
 		//self.duck2.flyDiagonally();

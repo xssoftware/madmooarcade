@@ -7,8 +7,9 @@ game.addAsset('logo.png');
 game.addAsset('duck-hunt.png');
 game.addAsset('duckhunt_various_sheet.png');
 
-
+game.addAudio('duck.ogg', 'duck');
 game.addAudio('Game_Start.mp3', 'gameStart');
+game.addAudio('dog bark.ogg', 'bark');
 
 
 /*game.addAudio('sounds/Game_Over_1.mp3', 'over1');
@@ -32,7 +33,11 @@ game.SceneGame = game.Scene.extend({
     backgroundColor: 0xb9bec7,
 
     init: function() {
-	    game.audio.playSound('gameStart',null);
+	    game.audio.playSound('gameStart',null, null, function(){
+		game.audio.playSound('bark');
+		});
+		
+		
         var background = new game.Sprite('duck-hunt.png').addTo(this.stage);
 
 		var round = new Round(this.stage);

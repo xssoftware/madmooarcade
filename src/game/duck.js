@@ -1,6 +1,7 @@
 'use strict';
 
 function Duck(x,y){
+    
 	this.x = x;
 	this.y = y;
 	this.eventEmitter = new EventEmitter();
@@ -8,7 +9,7 @@ function Duck(x,y){
 
 	this.viewObject.x = x;
 	this.viewObject.y = y;
-
+    
 	this.texture = game.PIXI.BaseTexture.fromImage('media/duckhunt_various_sheet.png');
 	
 	this.currentAnimation = null;
@@ -47,6 +48,9 @@ function Duck(x,y){
 }
 
 Duck.prototype.setAnimation = function(animation, loop, onComplete){
+  
+	
+	
 	var self = this;
 	var textures = [], i, frame, rect;
 	loop = (loop === undefined ? true : loop);
