@@ -49,7 +49,10 @@ Round.prototype.start = function(){
 		duck.fly();
 	});
 	
-	
+	this.dog.eventEmitter.registerEvent('goneOffscreen', function(){
+		console.log("Offscreen now!");
+		self.dog.laugh();
+	});
 };
 
 

@@ -140,6 +140,7 @@ Duck.prototype.fly = function(){
 			self.fly();
 		} else {
 			//the duck has left the field
+			self.eventEmitter.emit('goneOffscreen');
 		}
 		
 	});
