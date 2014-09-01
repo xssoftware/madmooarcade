@@ -1,17 +1,19 @@
 'use strict';
 
-function Duck([x,y,x1,y1,x2,y2]){
-	this.x = x;
-	this.y = y;
-	this.x1 = x1;
-	this.y1 = y1;
-	this.x2 = x2;
-	this.y2 = y2;
+function Duck(path){
+	
+	
+	this.path = path;
+	this.pathProgress = 0;
+	
 	this.eventEmitter = new EventEmitter();
 	this.viewObject = new game.Container();
+	
+	this.x = this.path[this.pathProgress].x;
+	this.y = this.path[this.pathProgress].y;
 
-	this.viewObject.x = x;
-	this.viewObject.y = y;
+	this.viewObject.x = this.path[this.pathProgress].x;
+	this.viewObject.y = this.path[this.pathProgress].y;
     
 	this.texture = game.PIXI.BaseTexture.fromImage('media/duckhunt_various_sheet.png');
 	
@@ -86,7 +88,26 @@ Duck.prototype.setAnimation = function(animation, loop, onComplete){
 	this.currentAnimation.play();
 };
 
-Duck.prototype.animationChoice = function(x,y,x1,y1){
+Duck.prototype.animationChoice = function(){
+	var currentPos, nextPos;
+	currentPos = this.path[this.pathProgress];
+	nextPos = this.path[this.pathProgress + 1];
+	
+	console.log(this.path[this.pathProgress], this.path[this.pathProgress+1]);
+	
+	if(currentPos.y === nextPos.y){
+		this.setAnimation('flyHorizontally');
+		this.viewObject.scale.x = (nextPos.x < currentPos.x) ? -1 : 1;
+ 
+	} else	if(currentPos.y < nextPos.y && currentPos.x === nextPos.x){
+		this.setAnimation('flyVertically');
+	} else {
+		this.setAnimation('flyDiagonally');
+		this.viewObject.scale.x = (nextPos.x < currentPos.x) ? -1 : 1;
+	}
+	
+
+	/*
 	if (this.x!==this.x1 && this.y===this.y1) {
 		console.log("Chose horizontally");
 		return this.setAnimation('flyHorizontally');
@@ -99,13 +120,33 @@ Duck.prototype.animationChoice = function(x,y,x1,y1){
 		console.log("Chose diagonally");
 		return this.setAnimation('flyDiagonally');
 	}
+	*/
 
 };
 
-Duck.prototype.fly = function(x,y,x1,y1,x2,y2){
+Duck.prototype.fly = function(){
+
+	var tween = new game.Tween(this.viewObject.position);
+	var self = this;
+	var coords = this.path[self.pathProgress + 1];
+	this.animationChoice();
+	tween.to({x: coords.x, y: coords.y},2500);
+	tween.start();
+	tween.onComplete(function(){
+		self.pathProgress++
+		if(self.path[self.pathProgress + 1]){
+			self.fly();
+		} else {
+			//the duck has left the field
+		}
+		
+	});
+
+	/*
 	var tween1 = new game.Tween(this.viewObject.position);
 	var tween2 = new game.Tween(this.viewObject.position);
-	var self = this;
+	
+	console.log(x,y,x1,y1,x2,y2);
 	tween1.to({x: this.x1, y: this.y1},2500);
 	tween2.to({x: this.x2, y: this.y2},2500);
 	console.log(this.x,this.y,this.x1,this.y1,this.x2,this.y2);
@@ -119,7 +160,7 @@ Duck.prototype.fly = function(x,y,x1,y1,x2,y2){
 
 	tween2.onComplete(function(){
 		self.eventEmitter.emit('destinationReached');
-	});
+	});*/
 };
 
 

@@ -7,13 +7,22 @@ function Round(stage){
 	this.stage = stage;
 
 	this.coords = [
-	[1, Math.floor(Math.random()*100), 275, 200, new game.System().width - 150, -80],
-	[Math.floor(Math.random()*250)+50, 275, 250, 150, -90, 1],
-	[Math.floor(Math.random()*250)+250, 275, 450, 200, new game.System().width +90, 50],
-	[1, Math.floor(Math.random()*250)+100, 250, 50, new game.System().width, -80],
-	[new game.System().width, Math.floor(Math.random()*200), new game.System().width/2, 150, -90, Math.floor(Math.random()*100)],
-	[1, Math.floor(Math.random()*300), new game.System().width/2, 150, new game.System().width+90, Math.floor(Math.random()*100)]
+	[
+		{x:1, y:500}, 
+		{x:275, y:100}, 
+		{x : 1, y:-80}
+	],
+	[
+		{x : Math.floor(Math.random()*250)+50, y:275}, 
+		{x:250, y:150}, 
+		{x:-90, y:1}
+	],
+	[
+		{x:Math.floor(Math.random()*250)+250, y:275}, 
+		{x:450, y:200}, 
+		{x : new game.System().width +90, y : 50}
 	]
+	];
 }
 
 
@@ -21,7 +30,8 @@ Round.prototype.start = function(){
 	var self = this;
 	this.stage.addChild(this.dog.viewObject);
 	this.dog.walkTo(new game.System().width / 2, this.dog.y);
-	var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
+	//var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
+	var duck = new Duck(self.coords[0]);
 	this.stage.addChild(duck.viewObject);
 	
 	this.dog.eventEmitter.registerEvent('arrived', function(){
