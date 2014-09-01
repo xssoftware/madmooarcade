@@ -5,20 +5,24 @@ function Round(stage){
 	this.ducksPerRound = 10;
 	this.dog = new Dog(1,350);
 	this.stage = stage;
-	this.duck1 = new Duck(250,275);
-	//this.duck2 = new Duck(450,275);
-	//this.duck3 = new Duck(1,1);
 
+	this.coords = [
+	[1, Math.floor(Math.random()*100), 275, 200, new game.System().width - 150, -80],
+	[Math.floor(Math.random()*250)+50, 275, 250, 150, -90, 1],
+	[Math.floor(Math.random()*250)+250, 275, 450, 200, new game.System().width +90, 50],
+	[1, Math.floor(Math.random()*250)+100, 250, 50, new game.System().width, -80],
+	[new game.System().width, Math.floor(Math.random()*200), new game.System().width/2, 150, -90, Math.floor(Math.random()*100)],
+	[1, Math.floor(Math.random()*300), new game.System().width/2, 150, new game.System().width+90, Math.floor(Math.random()*100)]
+	]
 }
 
 
 Round.prototype.start = function(){
 	var self = this;
 	this.stage.addChild(this.dog.viewObject);
-	this.stage.addChild(this.duck1.viewObject);
-	//this.stage.addChild(this.duck2.viewObject);
-	//this.stage.addChild(this.duck3.viewObject);
 	this.dog.walkTo(new game.System().width / 2, this.dog.y);
+	var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
+	this.stage.addChild(duck.viewObject);
 	
 	this.dog.eventEmitter.registerEvent('arrived', function(){
 		self.dog.foundDuck();
@@ -30,9 +34,7 @@ Round.prototype.start = function(){
 	
 	this.dog.eventEmitter.registerEvent('jumped', function(){
 		//here we create the ducks and send them on their way
-		self.duck1.flyVertically();
-		//self.duck2.flyDiagonally();
-		//self.duck3.flyHorizontally();
+		duck.fly();
 	});
 	
 	

@@ -1,8 +1,12 @@
 'use strict';
 
-function Duck(x,y){
+function Duck([x,y,x1,y1,x2,y2]){
 	this.x = x;
 	this.y = y;
+	this.x1 = x1;
+	this.y1 = y1;
+	this.x2 = x2;
+	this.y2 = y2;
 	this.eventEmitter = new EventEmitter();
 	this.viewObject = new game.Container();
 
@@ -42,6 +46,7 @@ function Duck(x,y){
 		//more animationSpeeds
 	};
 	
+
 	console.log(this.texture);
 
 }
@@ -78,8 +83,44 @@ Duck.prototype.setAnimation = function(animation, loop, onComplete){
 	this.currentAnimation.play();
 };
 
+Duck.prototype.animationChoice = function(x,y,x1,y1){
+	if (this.x!==this.x1 && this.y===this.y1) {
+		console.log("Chose horizontally");
+		return this.setAnimation('flyHorizontally');
+	}
+	else if (this.x===this.x1 && this.y!==this.y1){
+		console.log("Chose vertically");
+		return this.setAnimation('flyVertically');
+	}
+	else {
+		console.log("Chose diagonally");
+		return this.setAnimation('flyDiagonally');
+	}
 
-Duck.prototype.flyVertically = function(x,y){
+};
+
+Duck.prototype.fly = function(x,y,x1,y1,x2,y2){
+	var tween1 = new game.Tween(this.viewObject.position);
+	var tween2 = new game.Tween(this.viewObject.position);
+	var self = this;
+	tween1.to({x: this.x1, y: this.y1},2500);
+	tween2.to({x: this.x2, y: this.y2},2500);
+	console.log(this.x,this.y,this.x1,this.y1,this.x2,this.y2);
+	this.animationChoice(this.x,this.y,this.x1,this.y1);
+	tween1.start();
+	tween1.onComplete(function(){
+		self.animationChoice(self.x1,self.y1,self.x2,self.y2);
+		console.log("Chaining tweens");
+		tween1.chain(tween2);
+	});
+
+	tween2.onComplete(function(){
+		self.eventEmitter.emit('destinationReached');
+	});
+};
+
+
+/*Duck.prototype.flyVertically = function(x,y){
 	var tween = new game.Tween(this.viewObject.position);
 	var self = this;
 	tween.to({y: -80}, 3500);
@@ -121,7 +162,7 @@ Duck.prototype.flyHorizontally = function(x, y){
 	});
 	
 	this.setAnimation('flyHorizontally');
-	tween.start();
+	tween.start();*/
 	
-};
+
 
