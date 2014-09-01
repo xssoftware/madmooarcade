@@ -28,8 +28,9 @@ function Dog(x, y){
 			{ x : 140, y : 125, width : this.width, height : this.height},
 			{ x : 280, y : 125, width : this.width, height : this.height}
 		],
-		isScared : [
-			//frames description
+		isLaughing : [
+			{x : 425, y : 125, width : this.width, height : this.height},
+			{x : 565, y : 125, width : this.width, height : this.height}
 		],
 		oneDuck : [
 			//frames description
@@ -43,7 +44,7 @@ function Dog(x, y){
 		walk : 0.1,
 		foundDuck : 0.01,
 		jump : 0.08,
-		isScared : 0.1,
+		isLaughing : 0.1,
 		oneDuck : 0.1
 	};
 	
@@ -128,3 +129,4 @@ var self = this;
 	
 };
 
+//Dog.prototype.laugh = function()

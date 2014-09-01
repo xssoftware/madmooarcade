@@ -30,8 +30,8 @@ Round.prototype.start = function(){
 	var self = this;
 	this.stage.addChild(this.dog.viewObject);
 	this.dog.walkTo(new game.System().width / 2, this.dog.y);
-	//var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
-	var duck = new Duck(self.coords[0]);
+	var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
+	//var duck = new Duck(self.coords[0]);
 	this.stage.addChild(duck.viewObject);
 	
 	this.dog.eventEmitter.registerEvent('arrived', function(){
@@ -43,7 +43,7 @@ Round.prototype.start = function(){
 	});
 	
 	this.dog.eventEmitter.registerEvent('jumped', function(){
-	     game.audio.playSound('duck', 1);
+	     //game.audio.playSound('duck', 1);
 	
 		//here we create the ducks and send them on their way
 		duck.fly();

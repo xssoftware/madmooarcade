@@ -47,7 +47,6 @@ function Duck(path){
 		flyVertically : 0.1
 		//more animationSpeeds
 	};
-	
 
 	console.log(this.texture);
 
@@ -128,12 +127,15 @@ Duck.prototype.fly = function(){
 
 	var tween = new game.Tween(this.viewObject.position);
 	var self = this;
-	var coords = this.path[self.pathProgress + 1];
+	var nextPos = this.path[self.pathProgress + 1];
+	var currentPos = this.path[this.pathProgress];
+	var tweenTime = (Math.sqrt((nextPos.x - currentPos.x)^2 + (nextPos.y - currentPos.y)^2))*200;
+	console.log(tweenTime);
 	this.animationChoice();
-	tween.to({x: coords.x, y: coords.y},2500);
+	tween.to({x: nextPos.x, y: nextPos.y}, tweenTime);
 	tween.start();
 	tween.onComplete(function(){
-		self.pathProgress++
+		self.pathProgress++;
 		if(self.path[self.pathProgress + 1]){
 			self.fly();
 		} else {
@@ -141,7 +143,7 @@ Duck.prototype.fly = function(){
 		}
 		
 	});
-
+};
 	/*
 	var tween1 = new game.Tween(this.viewObject.position);
 	var tween2 = new game.Tween(this.viewObject.position);
@@ -161,7 +163,7 @@ Duck.prototype.fly = function(){
 	tween2.onComplete(function(){
 		self.eventEmitter.emit('destinationReached');
 	});*/
-};
+
 
 
 /*Duck.prototype.flyVertically = function(x,y){
