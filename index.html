@@ -13,9 +13,30 @@
     <script type="text/javascript" src="src/game/main.js"></script>
 </head>
 <body>
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : 1462485310643117,
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 	<h1>duck hunt</h1>
+	<div class="fb-like" data-href="https://facebook.com/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	
 	<div>
 	<canvas id="canvas"  ></canvas>
 	</div>
+
+	
 </body>
 </html>
