@@ -129,14 +129,13 @@ var self = this;
 	
 };
 
-Dog.prototype.laugh = function(x,y){
-	this.x = x;
-	this.y = y;
+Dog.prototype.laugh = function(){
 	var self = this;
 	var tween = new game.Tween(this.viewObject.position);
-	tween.to({x : x+350}, 15000);
+	tween.to({x : (this.x + this.width / 2)}, 1500);
 	tween.start();
-	this.setAnimation('isLaughing', false, function(){
+	this.setAnimation('isLaughing');
+	tween.onComplete(function(){
 		self.currentAnimation.visible = false;
 		self.eventEmitter.emit('jumped');
 	});
