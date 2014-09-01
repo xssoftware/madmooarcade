@@ -12,7 +12,7 @@ function Duck([x,y,x1,y1,x2,y2]){
 
 	this.viewObject.x = x;
 	this.viewObject.y = y;
-
+    
 	this.texture = game.PIXI.BaseTexture.fromImage('media/duckhunt_various_sheet.png');
 	
 	this.currentAnimation = null;
@@ -52,6 +52,9 @@ function Duck([x,y,x1,y1,x2,y2]){
 }
 
 Duck.prototype.setAnimation = function(animation, loop, onComplete){
+  
+	
+	
 	var self = this;
 	var textures = [], i, frame, rect;
 	loop = (loop === undefined ? true : loop);
