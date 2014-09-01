@@ -24,7 +24,17 @@ game.SceneMenu = game.Scene.extend({
     backgroundColor: 0xb9bec7,
 
     init: function() {
-     
+		
+		var text = new game.PIXI.Text('Start Game');
+		text.interactive = true;
+		text.position = {x:150, y:150};
+		text.click = function(){
+			game.system.setScene(game.SceneGame);
+		};
+		
+		
+
+		this.stage.addChild(text);
 	
     }
 });
@@ -57,6 +67,6 @@ game.SceneScores = game.Scene.extend({
 });
 
 
-game.start(game.SceneGame);
+game.start(game.SceneMenu);
 	
 });
