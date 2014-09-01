@@ -128,8 +128,8 @@ Duck.prototype.fly = function(){
 	var tween = new game.Tween(this.viewObject.position);
 	var self = this;
 	var nextPos = this.path[self.pathProgress + 1];
-	var currentPos = this.path[this.pathProgress];
-	var tweenTime = (Math.sqrt((nextPos.x - currentPos.x)^2 + (nextPos.y - currentPos.y)^2))*200;
+	var currentPos = this.path[self.pathProgress];
+	var tweenTime = (Math.sqrt(Math.pow((nextPos.x - currentPos.x),2) + Math.pow((nextPos.y - currentPos.y),2)))/0.2;
 	console.log(tweenTime);
 	this.animationChoice();
 	tween.to({x: nextPos.x, y: nextPos.y}, tweenTime);
