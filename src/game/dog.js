@@ -131,8 +131,9 @@ var self = this;
 
 Dog.prototype.laugh = function(){
 	var self = this;
+	this.x = new game.System().width/2;
 	var tween = new game.Tween(this.viewObject.position);
-	tween.to({x : (this.x + this.width / 2)}, 1500);
+	tween.to({x : (this.x + this.width / 2), y : 300}, 1500);
 	tween.start();
 	this.setAnimation('isLaughing');
 	tween.onComplete(function(){

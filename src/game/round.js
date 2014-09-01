@@ -49,8 +49,11 @@ Round.prototype.start = function(){
 	    self.stage.addChild(duck.viewObject);
 		duck.fly();
 		duck.eventEmitter.registerEvent('goneOffscreen', function(){
-			console.log("Offscreen now!");
 			self.dog.laugh();
+		});
+		duck.eventEmitter.registerEvent('shotDuck', function(){
+			//death animation
+			//new duck
 		});
 	});
 	

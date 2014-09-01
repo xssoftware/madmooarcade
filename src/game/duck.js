@@ -14,7 +14,8 @@ function Duck(path){
 
 	this.viewObject.x = this.path[this.pathProgress].x;
 	this.viewObject.y = this.path[this.pathProgress].y;
-    
+    this.viewObject.interactive = true;
+
 	this.texture = game.PIXI.BaseTexture.fromImage('media/duckhunt_various_sheet.png');
 	
 	this.currentAnimation = null;
@@ -37,15 +38,21 @@ function Duck(path){
 			{ x : 1, y : 460, width : this.width, height : this.height},
 			{ x : 90, y : 460, width : this.width, height : this.height},
 			{ x : 180, y : 460, width : this.width, height : this.height}
+		],
+		shot : [
+			{x : 1, y : 550, width : this.width, height : this.height}
+		],
+		falling : [
+			{x : 90, y : 550, width : this.width, height : this.height}
 		]
-		//Death animations
 	};
 
 	this.animationSpeeds = {
 		flyHorizontally : 0.1,
 		flyDiagonally : 0.1,
-		flyVertically : 0.1
-		//more animationSpeeds
+		flyVertically : 0.1,
+		shot : 0.1,
+		falling : 0.1
 	};
 
 	console.log(this.texture);
@@ -134,6 +141,11 @@ Duck.prototype.fly = function(){
 	this.animationChoice();
 	tween.to({x: nextPos.x, y: nextPos.y}, tweenTime);
 	tween.start();
+	this.viewObject.click = function(){
+		tween.stop();
+		self.currentAnimation.visible = false;
+		self.eventEmitter.emit('shotDuck');
+	};
 	tween.onComplete(function(){
 		self.pathProgress++;
 		if(self.path[self.pathProgress + 1]){
