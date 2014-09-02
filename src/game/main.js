@@ -6,6 +6,7 @@ game.module(
 game.addAsset('logo.png');
 game.addAsset('duck-hunt.png');
 game.addAsset('duckhunt_various_sheet.png');
+game.addAsset('duck-hunt-start.png');
 
 game.addAudio('duck.ogg', 'duck');
 game.addAudio('Game_Start.mp3', 'gameStart');
@@ -20,16 +21,21 @@ game.SceneMenu = game.Scene.extend({
 
     init: function() {
 		game.audio.playSound('title');
-		var text = new game.PIXI.Text('Start Game');
-		text.interactive = true;
-		text.position = {x:150, y:150};
-		text.click = function(){
-			game.system.setScene(game.SceneGame);
+		var background2 = new game.Sprite('duck-hunt-start.png').addTo(this.stage);
+		background2.interactive = true;
+		background2.click = function(){
+		game.system.setScene(game.SceneGame);
 		};
+		//var text = new game.PIXI.Text('Start Game');
+		//text.interactive = true;
+		//text.position = {x:150, y:150};
+		//text.click = function(){
+		//	game.system.setScene(game.SceneGame);
+		//};
 		
 		
 
-		this.stage.addChild(text);
+		//this.stage.addChild(text);
 	
     }
 });
