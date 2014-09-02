@@ -12,7 +12,6 @@ game.addAudio('duck.ogg', 'duck');
 game.addAudio('Game_Start.mp3', 'gameStart');
 game.addAudio('dog bark.ogg', 'bark');
 game.addAudio('Title_Theme.ogg', 'title');
-game.addAudio('laugh.ogg', 'l');
 
 
 

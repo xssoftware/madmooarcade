@@ -136,7 +136,6 @@ Dog.prototype.laugh = function(){
 	tween.to({x : (this.x + this.width / 2), y : 300}, 1500);
 	tween.start();
 	this.setAnimation('isLaughing');
-	game.audio.playSound('l');
 	tween.onComplete(function(){
 		self.currentAnimation.visible = false;
 		self.eventEmitter.emit('jumped');
