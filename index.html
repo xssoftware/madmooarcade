@@ -3,21 +3,60 @@
 <head>
     <meta charset="utf-8">
     <title>Panda.js HTML5 game engine</title>
-
     <script type="text/javascript" src="src/game/config.js"></script>
     <script type="text/javascript" src="src/engine/core.js"></script>
-	<script type="text/javascript" src="src/game/eventEmitter.js"></script>
-	<script type="text/javascript" src="src/game/round.js"></script>
-	<script type="text/javascript" src="src/game/dog.js"></script>
-	<script type="text/javascript" src="src/game/duck.js"></script>
+	  <script type="text/javascript" src="src/game/eventEmitter.js"></script>
+	  <script type="text/javascript" src="src/game/round.js"></script>
+	  <script type="text/javascript" src="src/game/dog.js"></script>
+	  <script type="text/javascript" src="src/game/duck.js"></script>
     <script type="text/javascript" src="src/game/main.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css">
 </head>
 <body>
-	<center><h1>duck hunt</h1></center>
-	
-	<div>
-		<canvas id="canvas"  ></canvas>
-	</div>
+<div>
+    <canvas></canvas>
+</div>
+
+<style>
+    .container-canvas {
+        margin-right: auto;
+        margin-left: auto;
+        width: 800px;
+    }
+    .footer{
+        height: 40px;
+        margin-top: 40px;
+}
+</style>
+
+<div class="container-canvas">
+    <canvas width="903" height="478"></canvas>
+</div>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="#">MadMoo Arcade</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Duck Hunt</a></li>
+                            <li><a href="scores.html">High Scores</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="bootstrap/js/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+
 <!-- facebook functionality -->
 <script>
       window.fbAsyncInit = function() {
@@ -42,7 +81,22 @@
 	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script>
 
-<div class="fb-like" data-href="http://localhost:5975/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div><br />
-<a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none">Tweet</a>
+<center>
+  <div class="fb-like" data-href="http://localhost:5975/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div><br />
+  <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none">Tweet</a>
+</center>
+  <div class="footer">
+      <div class="container">
+        <p class="text-muted"><center>MadMoo Arcade project by Lyubomir Tsekov, Stefan Geshev &amp; Atanas Slavov</center></p>
+      </div>
+    </div>
+
+<!-- <div id="footer" class="container">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="navbar-inner navbar-content-center">
+            <p class="text-muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+        </div>
+    </nav>
+</div> -->
 </body>
 </html>
