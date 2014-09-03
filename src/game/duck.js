@@ -142,6 +142,7 @@ Duck.prototype.fly = function(){
 	tween.to({x: nextPos.x, y: nextPos.y}, tweenTime);
 	tween.start();
 	this.viewObject.click = function(){
+	game.audio.playSound('b');
 		tween.stop();
 		self.currentAnimation.visible = false;
 		self.eventEmitter.emit('shotDuck');

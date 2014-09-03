@@ -13,6 +13,7 @@ game.addAudio('Game_Start.mp3', 'gameStart');
 game.addAudio('dog bark.ogg', 'bark');
 game.addAudio('Title_Theme.ogg', 'title');
 game.addAudio('laugh.ogg', 'l');
+game.addAudio('blast.ogg', 'b');
 
 
 
@@ -54,6 +55,11 @@ game.SceneGame = game.Scene.extend({
         var background = new game.Sprite('duck-hunt.png').addTo(this.stage);
 
 		var round = new Round(this.stage);
+		background.interactive = true;
+		background.click = function()
+		{		
+		     game.audio.playSound('b');		
+		};
 		round.start();
 		
     }
