@@ -1,9 +1,38 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Duck Hunt - High Scores Chart</title>
-</head>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.css" />
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.dateAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.barRenderer.min.js"></script>
+	<scr ipt type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
 
+	<script class="code" type="text/javascript">
+	$(document).ready(function(){	
+
+	   var data = [['1st Place',50],['2nd Place',40],['3d Place',35],['4th Place',20],['5th Place',10]];
+
+	    var options = {
+		  title: 'Duck Hunt - High Scores Chart',
+	    	  series:[{renderer:$.jqplot.BarRenderer}],
+	    	  axes: {
+	      		xaxis: {
+	        		   renderer: $.jqplot.CategoryAxisRenderer
+	      		}
+	      	  }
+	    };
+
+	    $.jqplot ('scoresChart', [data], options);
+	});
+
+	</script>
+</head>
 <body>
-	
+<center><div id="scoresChart" style="width:300px; height:500px"></div></center>
 </body>
+
 </html>
