@@ -8,7 +8,7 @@ function Round(stage){
 
 	this.coords = [
 	[
-		{x:1, y:500}, 
+		{x:1, y:300}, 
 		{x:275, y:100}, 
 		{x : 1, y:-80}
 	],
@@ -48,15 +48,25 @@ Round.prototype.start = function(){
 	    var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
 	    self.stage.addChild(duck.viewObject);
 		duck.fly();
+
 		duck.eventEmitter.registerEvent('goneOffscreen', function(){
 			self.dog.laugh();
 		});
+
 		duck.eventEmitter.registerEvent('shotDuck', function(){
-			//death animation
-			//new duck
+			duck.shot();
+		});
+
+		duck.eventEmitter.registerEvent('falling',function(){
+			duck.falling();
+		});
+		duck.eventEmitter.registerEvent('duckFound',function(){
+			self.dog.duckFound();
 		});
 	});
-	
+	/*this.dog.eventEmitter.registerEvent('duckFound', function(){
+		self.dog.duckFound();
+	});*/
 };
 
 

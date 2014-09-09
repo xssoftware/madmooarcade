@@ -33,7 +33,7 @@ function Dog(x, y){
 			{x : 565, y : 125, width : this.width, height : this.height}
 		],
 		oneDuck : [
-			//frames description
+			{ x : 735, y : 1, width : this.width, height : this.height}
 		],
 		twoDuck : [
 			//frames description
@@ -133,10 +133,24 @@ Dog.prototype.laugh = function(){
 	var self = this;
 	this.x = new game.System().width/2;
 	var tween = new game.Tween(this.viewObject.position);
+	this.y = 350;
 	tween.to({x : (this.x + this.width / 2), y : 300}, 1500);
 	tween.start();
 	this.setAnimation('isLaughing');
 	game.audio.playSound('l');
+	tween.onComplete(function(){
+		self.currentAnimation.visible = false;
+		self.eventEmitter.emit('jumped');
+	});
+};
+
+Dog.prototype.duckFound = function(){
+	var self = this;
+	var tween = new game.Tween(this.viewObject.position);
+	this.y = 350;
+	tween.to({x : (new game.System().width/2 + this.width/2), y : 300}, 1500);
+	this.setAnimation('oneDuck');
+	tween.start();
 	tween.onComplete(function(){
 		self.currentAnimation.visible = false;
 		self.eventEmitter.emit('jumped');

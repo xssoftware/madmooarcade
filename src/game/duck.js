@@ -40,10 +40,10 @@ function Duck(path){
 			{ x : 180, y : 460, width : this.width, height : this.height}
 		],
 		shot : [
-			{x : 1, y : 550, width : this.width, height : this.height}
+			{x : 1, y : 542, width : this.width, height : this.height}
 		],
 		falling : [
-			{x : 90, y : 550, width : this.width, height : this.height}
+			{x : 90, y : 542, width : this.width, height : this.height}
 		]
 	};
 
@@ -156,6 +156,26 @@ Duck.prototype.fly = function(){
 			self.eventEmitter.emit('goneOffscreen');
 		}
 		
+	});
+};
+
+Duck.prototype.shot = function(){
+	var self = this;
+	this.setAnimation('shot', false, function(){
+		self.eventEmitter.emit('falling');
+	});
+	
+};
+
+Duck.prototype.falling = function(){
+	var self = this;
+	var tween = new game.Tween(this.viewObject.position);
+	tween.to({ y:300}, 1000);
+	this.setAnimation('falling');
+	tween.start();
+	tween.onComplete(function(){
+		self.currentAnimation.visible = false;
+		self.eventEmitter.emit('duckFound');
 	});
 };
 	/*
