@@ -6,10 +6,12 @@ function Round(stage){
 	this.pointsTotal = 0;
 	this.dog = new Dog(1,350);
 	this.stage = stage;
-	var text = game.PIXI.Text(0);
+	this.text = new game.PIXI.Text(0);
 	this.text.position.x = 1;
 	this.text.position.y = 1;
-	this.stage.addChild(this.text);
+	this.text.style.fill = 'white';
+	this.text.style.font = 'bold 50px Arial';
+    this.stage.addChild(this.text);
 	this.coords = [
 	[
 		{x:1, y:300}, 
