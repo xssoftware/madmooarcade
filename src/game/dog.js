@@ -148,7 +148,7 @@ Dog.prototype.duckFound = function(){
 	var self = this;
 	var tween = new game.Tween(this.viewObject.position);
 	this.viewObject.position.y = 350;
-	tween.to({x : (new game.System().width/2 + this.width/2), y : 300}, 1500);
+	tween.to({x : (new game.System().width/2 + this.width/2), y : 300}, 750);
 	this.setAnimation('oneDuck');
 	tween.start();
 	tween.onComplete(function(){

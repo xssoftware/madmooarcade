@@ -2,9 +2,11 @@
 
 function Round(stage){
 	this.ducksSpawned = 0;
-	this.ducksPerRound = 10;
+	this.ducksPerRound = 5;
+	this.pointsTotal = 0;
 	this.dog = new Dog(1,350);
 	this.stage = stage;
+	this.scores = [0,0,0,0,0];
 
 	this.coords = [
 	[
@@ -45,9 +47,33 @@ Round.prototype.start = function(){
 	this.dog.eventEmitter.registerEvent('jumped', function(){
 	    //game.audio.playSound('duck', 1);   
 		//here we create the ducks and send them on their way
+		if(self.ducksSpawned<self.ducksPerRound){
 	    var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
 	    self.stage.addChild(duck.viewObject);
+	    self.ducksSpawned++;
 		duck.fly();
+		}
+		else{
+			if(game.storage.has('scores')===false){
+				game.storage.set('scores',self.pointsTotal);
+				self.scores[(self.scores.length)-1]=game.storage.get('scores');
+				console.log("Hello");
+			}
+			else{
+				game.storage.set('scores',self.pointsTotal);
+				for(var i = 0; i<self.scores.length; i++){
+					if(i<self.scores.length-1){
+						self.scores[i] = self.scores[i+1]; 
+						}
+					else{
+						self.scores[i] = game.storage.get('scores');
+						};
+				};
+			};
+			console.log("Your score for this round was " + game.storage.get('scores'));
+			console.log(self.scores);
+		};
+
 
 		duck.eventEmitter.registerEvent('goneOffscreen', function(){
 			self.dog.laugh();
@@ -62,6 +88,8 @@ Round.prototype.start = function(){
 		});
 		duck.eventEmitter.registerEvent('duckFound',function(){
 			self.dog.duckFound();
+			self.pointsTotal += 50;
+			console.log(self.pointsTotal);
 		});
 	});
 	/*this.dog.eventEmitter.registerEvent('duckFound', function(){

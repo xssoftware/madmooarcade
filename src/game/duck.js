@@ -171,6 +171,7 @@ Duck.prototype.falling = function(){
 	var self = this;
 	var tween = new game.Tween(this.viewObject.position);
 	tween.to({ y:300}, 1000);
+	this.viewObject.interactive = false;
 	this.setAnimation('falling');
 	tween.start();
 	tween.onComplete(function(){
