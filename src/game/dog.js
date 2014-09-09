@@ -133,7 +133,7 @@ Dog.prototype.laugh = function(){
 	var self = this;
 	this.x = new game.System().width/2;
 	var tween = new game.Tween(this.viewObject.position);
-	this.y = 350;
+	this.viewObject.position.y = 350;
 	tween.to({x : (this.x + this.width / 2), y : 300}, 1500);
 	tween.start();
 	this.setAnimation('isLaughing');
@@ -147,7 +147,7 @@ Dog.prototype.laugh = function(){
 Dog.prototype.duckFound = function(){
 	var self = this;
 	var tween = new game.Tween(this.viewObject.position);
-	this.y = 350;
+	this.viewObject.position.y = 350;
 	tween.to({x : (new game.System().width/2 + this.width/2), y : 300}, 1500);
 	this.setAnimation('oneDuck');
 	tween.start();
