@@ -6,8 +6,10 @@ function Round(stage){
 	this.pointsTotal = 0;
 	this.dog = new Dog(1,350);
 	this.stage = stage;
-	this.scores = [0,0,0,0,0];
-
+	var text = game.PIXI.Text(0);
+	this.text.position.x = 1;
+	this.text.position.y = 1;
+	this.stage.addChild(this.text);
 	this.coords = [
 	[
 		{x:1, y:300}, 
@@ -25,6 +27,24 @@ function Round(stage){
 		{x : new game.System().width +90, y : 50}
 	]
 	];
+
+	this.scoring = function(){
+		var scores;
+   		var scoresTmp;
+		   if(game.storage.has('scores')===false){
+		    scores = [0,0,0,0,this.pointsTotal];
+		    game.storage.set('scores', scores);
+		   }
+		   else{
+		    scoresTmp = game.storage.get('scores');
+		    scores = [];
+		    for(var i = 1; i < scoresTmp.length; i++){
+		     scores.push(scoresTmp[i]);
+		    };
+		    scores.push(this.pointsTotal);
+		    game.storage.set('scores', scores);
+		   }
+		};
 }
 
 
@@ -48,30 +68,13 @@ Round.prototype.start = function(){
 	    //game.audio.playSound('duck', 1);   
 		//here we create the ducks and send them on their way
 		if(self.ducksSpawned<self.ducksPerRound){
-	    var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
-	    self.stage.addChild(duck.viewObject);
-	    self.ducksSpawned++;
-		duck.fly();
+		    var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
+		    self.stage.addChild(duck.viewObject);
+		    self.ducksSpawned++;
+			duck.fly();
 		}
 		else{
-			if(game.storage.has('scores')===false){
-				game.storage.set('scores',self.pointsTotal);
-				self.scores[(self.scores.length)-1]=game.storage.get('scores');
-				console.log("Hello");
-			}
-			else{
-				game.storage.set('scores',self.pointsTotal);
-				for(var i = 0; i<self.scores.length; i++){
-					if(i<self.scores.length-1){
-						self.scores[i] = self.scores[i+1]; 
-						}
-					else{
-						self.scores[i] = game.storage.get('scores');
-						};
-				};
-			};
-			console.log("Your score for this round was " + game.storage.get('scores'));
-			console.log(self.scores);
+			self.scoring();
 		};
 
 
@@ -89,7 +92,7 @@ Round.prototype.start = function(){
 		duck.eventEmitter.registerEvent('duckFound',function(){
 			self.dog.duckFound();
 			self.pointsTotal += 50;
-			console.log(self.pointsTotal);
+			self.text.setText(self.pointsTotal);
 		});
 	});
 	/*this.dog.eventEmitter.registerEvent('duckFound', function(){
