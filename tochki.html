@@ -6,29 +6,25 @@
 	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.css" />
 
 	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.json2.min.js"> </script>
+ 
+
 
 
 <script>
 $(document).ready(function(){
-  var scoreRenderer = function() {
-    var data = {
-      if(game.storage.has('scores')) {
-        data = game.storage.get('scores');
-    }
-} else {
-  data = [1,10,20,40,60];
-}      
-    }
 
-    return data;
-  };
- 
 
-     }
+  var data = localStorage.getItem('com.mycompany.mygame.scores');
+     if(!data){
+		data = [0,0,0,0,0];
+	 } else {
+		data = data.replace('[', '').replace(']','').split(',');
+		console.log(data);
+	 }
 
-  var plot1 = $.jqplot('chart1',[],{
+
+  var plot1 = $.jqplot('chart1',[data],{
       title: 'Score Data Renderer',
-      dataRenderer: scoreRenderer
   });
 });
 </script>
