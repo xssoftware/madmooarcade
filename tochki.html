@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>Duck Hunt - High Score Chart</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jqplot/1.0.8/jquery.jqplot.min.css" />
+
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/jqplot/1.0.8/plugins/jqplot.json2.min.js"> </script>
+
+
+<script>
+$(document).ready(function(){
+  var scoreRenderer = function() {
+    var data = {
+      if(game.storage.has('scores')) {
+        data = game.storage.get('scores');
+    }
+} else {
+  data = [1,10,20,40,60];
+}      
+    }
+
+    return data;
+  };
+ 
+
+     }
+
+  var plot1 = $.jqplot('chart1',[],{
+      title: 'Score Data Renderer',
+      dataRenderer: scoreRenderer
+  });
+});
+</script>
+</head>	
+
+<body>
+<div id="chart1" style="height:300px; width:500px;"></div>
+</body>
+</html>
