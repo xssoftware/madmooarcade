@@ -8,12 +8,16 @@ game.addAsset('duck-hunt.png');
 game.addAsset('duckhunt_various_sheet.png');
 game.addAsset('duck-hunt-start.png');
 
-game.addAudio('duck.ogg', 'duck');
+game.addAudio('duck.ogg', 'duck2');
 game.addAudio('Game_Start.mp3', 'gameStart');
 game.addAudio('dog bark.ogg', 'bark');
 game.addAudio('Title_Theme.ogg', 'title');
 game.addAudio('laugh.ogg', 'l');
 game.addAudio('blast.ogg', 'b');
+game.addAudio('end_duck_round.ogg', 'end round');
+game.addAudio('duckFall.ogg', 'fall');
+game.addAudio('duckDrop.ogg', 'drop');
+game.addAudio('duck_wing_flap_and_quack.ogg', 'duck');
 
 
 

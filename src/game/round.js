@@ -67,7 +67,7 @@ Round.prototype.start = function(){
 	});
 	
 	this.dog.eventEmitter.registerEvent('jumped', function(){
-	    //game.audio.playSound('duck', 1);   
+	    game.audio.playSound('duck', 1);   
 		//here we create the ducks and send them on their way
 		if(self.ducksSpawned<self.ducksPerRound){
 		    var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
@@ -81,6 +81,7 @@ Round.prototype.start = function(){
 
 
 		duck.eventEmitter.registerEvent('goneOffscreen', function(){
+		game.audio.stopSound('duck');
 			self.dog.laugh();
 		});
 
@@ -89,9 +90,14 @@ Round.prototype.start = function(){
 		});
 
 		duck.eventEmitter.registerEvent('falling',function(){
+		game.audio.stopSound('duck');
+		    game.audio.playSound('fall');
 			duck.falling();
 		});
 		duck.eventEmitter.registerEvent('duckFound',function(){
+		game.audio.stopSound('fall');
+			//game.audio.playSound('drop');
+		    game.audio.playSound('end round');
 			self.dog.duckFound();
 			self.pointsTotal += 50;
 			self.text.setText(self.pointsTotal);
