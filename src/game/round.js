@@ -13,6 +13,7 @@ function Round(stage){
 	this.text.style.fill = 'white';
 	this.text.style.font = 'bold 50px Arial';
     this.stage.addChild(this.text);
+	this.stage.addChild(this.away);
 	this.coords = [
 	[
 		{x:1, y:300}, 
