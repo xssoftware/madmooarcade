@@ -6,6 +6,7 @@ function Round(stage){
 	this.pointsTotal = 0;
 	this.dog = new Dog(1,350);
 	this.stage = stage;
+	this.away = new game.Sprite('fly away.png');
 	this.text = new game.PIXI.Text(0);
 	this.text.position.x = 1;
 	this.text.position.y = 1;

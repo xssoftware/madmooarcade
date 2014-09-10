@@ -7,6 +7,7 @@ game.addAsset('logo.png');
 game.addAsset('duck-hunt.png');
 game.addAsset('duckhunt_various_sheet.png');
 game.addAsset('duck-hunt-start.png');
+game.addAsset('fly away.png');
 
 game.addAudio('duck.ogg', 'duck2');
 game.addAudio('Game_Start.mp3', 'gameStart');
