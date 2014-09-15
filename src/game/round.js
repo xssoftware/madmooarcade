@@ -7,7 +7,7 @@ function Round(stage){
 	this.dog = new Dog(1,350);
 	this.stage = stage;
 	this.away = new game.Sprite('fly away.png');
-	this.away.position.x = 150;
+	this.away.position.x = 374;
 	this.away.position.y = 150;
 	this.text = new game.PIXI.Text(0);
 	this.text.position.x = 1;
