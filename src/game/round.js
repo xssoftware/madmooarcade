@@ -7,6 +7,8 @@ function Round(stage){
 	this.dog = new Dog(1,350);
 	this.stage = stage;
 	this.away = new game.Sprite('fly away.png');
+	this.away.position.x = 150;
+	this.away.position.y = 150;
 	this.text = new game.PIXI.Text(0);
 	this.text.position.x = 1;
 	this.text.position.y = 1;
@@ -84,6 +86,16 @@ Round.prototype.start = function(){
 
 		duck.eventEmitter.registerEvent('goneOffscreen', function(){
 		game.audio.stopSound('duck');
+		//self.stage.addChild(away);
+			
+			
+			//----------------------------------------
+		//	var away = new game.Sprite('fly away.png').addTo(this.stage);
+			//this.stage.addChild(away);
+			//away.setSprite();
+			//game.Timer.addTimer(2000, function()
+			//{self.stage.addChild(away);}, true);
+			//game.Timer.remove()
 			self.dog.laugh();
 		});
 
