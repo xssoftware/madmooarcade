@@ -15,7 +15,7 @@ function Round(stage){
 	this.text.style.fill = 'white';
 	this.text.style.font = 'bold 50px Arial';
     this.stage.addChild(this.text);
-	this.stage.addChild(this.away);
+	
 	this.coords = [
 	[
 		{x:1, y:300}, 
@@ -86,16 +86,12 @@ Round.prototype.start = function(){
 
 		duck.eventEmitter.registerEvent('goneOffscreen', function(){
 		game.audio.stopSound('duck');
-		//self.stage.addChild(away);
-			
-			
-			//----------------------------------------
-		//	var away = new game.Sprite('fly away.png').addTo(this.stage);
-			//this.stage.addChild(away);
-			//away.setSprite();
-			//game.Timer.addTimer(2000, function()
-			//{self.stage.addChild(away);}, true);
-			//game.Timer.remove()
+		
+			self.stage.addChild(self.away);
+			setTimeout(function(){
+				self.stage.removeChild(self.away);
+			}, 1500);
+	
 			self.dog.laugh();
 		});
 
