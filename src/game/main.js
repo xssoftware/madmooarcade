@@ -80,15 +80,21 @@ game.SceneScores = game.Scene.extend({
 	var newgame = new game.PIXI.Text('New Game');
 	newgame.interactive = true;
 	newgame.position = {x:374, y:120};
-	
-	var highScores = new game.PIXI.Text('High Scores');
-	highScores.interactive.true;
-	highScores.position = {x:374, y:160};
-	
 	newgame.click = function()
 	{
 	   game.system.setScene(game.SceneGame);
 	};
+	
+	var highScores = new game.PIXI.Text('High Scores');
+	highScores.interactive = true;
+	highScores.position = {x:374, y:160};
+	highScores.click = function()
+	{
+	    window.open('scores.html');
+	};
+	
+	
+	
 	
      this.stage.addChild(newgame);
 	 this.stage.addChild(highScores);
