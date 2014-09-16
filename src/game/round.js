@@ -71,9 +71,10 @@ Round.prototype.start = function(){
 	});
 	
 	this.dog.eventEmitter.registerEvent('jumped', function(){
-	    game.audio.playSound('duck', 1);   
+	      
 		//here we create the ducks and send them on their way
 		if(self.ducksSpawned<self.ducksPerRound){
+		game.audio.playSound('duck', 1); 
 		    var duck = new Duck(self.coords[Math.floor((Math.random() * self.coords.length))]);
 		    self.stage.addChild(duck.viewObject);
 		    self.ducksSpawned++;
@@ -81,6 +82,7 @@ Round.prototype.start = function(){
 		}
 		else{
 			self.scoring();
+			return;
 		};
 
 
