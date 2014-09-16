@@ -20,6 +20,7 @@ game.addAudio('end_duck_round.ogg', 'end round');
 game.addAudio('duckFall.ogg', 'fall');
 game.addAudio('duckDrop.ogg', 'drop');
 game.addAudio('duck_wing_flap_and_quack.ogg', 'duck');
+game.addAudio('next_round.ogg', 'end stage');
 
 
 
@@ -32,7 +33,7 @@ game.SceneMenu = game.Scene.extend({
 		var background2 = new game.Sprite('duck-hunt-start.png').addTo(this.stage);
 		background2.interactive = true;
 		background2.click = function(){
-		game.system.setScene(game.SceneScores);
+		game.system.setScene(game.SceneGame);
 		};
 		//var text = new game.PIXI.Text('Start Game');
 		//text.interactive = true;
@@ -76,7 +77,8 @@ game.SceneScores = game.Scene.extend({
     backgroundColor: 0xb9bec7,
 
     init: function() {
-		var background3 = new game.Sprite('scene3.png').addTo(this.stage);
+	game.audio.playSound('end stage');
+	var background3 = new game.Sprite('scene3.png').addTo(this.stage);
 	var newgame = new game.PIXI.Text('New Game');
 	newgame.interactive = true;
 	newgame.position = {x:374, y:120};

@@ -49,6 +49,7 @@ function Round(stage){
 		    };
 		    scores.push(this.pointsTotal);
 		    game.storage.set('scores', scores);
+			game.system.setScene(game.SceneScores);
 		   }
 		};
 }
