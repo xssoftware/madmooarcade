@@ -1,0 +1,5 @@
+canvas {
+    cursor: crosshair; 
+    border-right: dotted red 1px;
+    border-bottom: dotted red 1px;
+}
