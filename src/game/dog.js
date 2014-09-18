@@ -89,7 +89,7 @@ Dog.prototype.setAnimation = function(animation, loop, onComplete){
 Dog.prototype.walkTo = function(x, y){
 	var tween = new game.Tween(this.viewObject.position);
 	var self = this;
-	tween.to({x:x}, 3500);
+	tween.to({x:x}, 6000);
 	this.x = x;
 	this.y = y;
 	
