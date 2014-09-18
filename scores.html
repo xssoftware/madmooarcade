@@ -17,9 +17,11 @@ $(document).ready(function(){
 
 
   var data = localStorage.getItem('com.mycompany.mygame.scores');
-     if(!data){
+     if(!data){ 
 		data = [0,0,0,0,0];
-	 } else {
+	 } else { for(var i = 0; i < data.length; i++){
+  				data[i] = parseInt(data[i], 10);
+  			}
 		data = data.replace('[', '').replace(']','').split(',');
 		console.log(data);
 	 }
@@ -44,3 +46,5 @@ $(document).ready(function(){
 </center>
 </body>
 </html>
+
+<!--  -->
