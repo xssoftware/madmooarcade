@@ -53,6 +53,7 @@ game.SceneGame = game.Scene.extend({
     backgroundColor: 0xb9bec7,
 
     init: function() {
+	    game.audio.stopSound('end stage');
 	    game.audio.stopSound('title');
 	    game.audio.playSound('gameStart',null, null, function(){
 		game.audio.playSound('bark');
