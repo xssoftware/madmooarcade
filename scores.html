@@ -19,13 +19,14 @@ $(document).ready(function(){
   var data = localStorage.getItem('com.mycompany.mygame.scores');
      if(!data){ 
 		data = [0,0,0,0,0];
-	 } else { for(var i = 0; i < data.length; i++){
-  				data[i] = parseInt(data[i], 10);
-  			}
+	 } else { 
 		data = data.replace('[', '').replace(']','').split(',');
 		console.log(data);
 	 }
-
+	 
+		for(var i = 0; i < data.length; i++){
+  			data[i] = parseInt(data[i], 10);
+  		}
 
   var plot1 = $.jqplot('chart1',[data],{
       title: 'Duck Hunt - High Score Chart',
